@@ -1,11 +1,11 @@
-FROM ubuntu:20.04
+FROM alpine:3.15
 
 ENV SLEIGH_DIR
 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
-RUN apt update && apt install git cmake
+RUN apk update && apk install git cmake
 
 RUN cmake -B build -S . -Dsleigh_ENABLE_EXAMPLE=ON && \
     cmake --build build -j && \
